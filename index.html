@@ -1,0 +1,86 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    	
+<title>.:App:.</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- 
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.6/angular.min.js"></script>
+ -->
+
+<link rel="stylesheet" href="dist/jquery-ui/1.12.1/jquery-ui.min.css">
+<link rel="stylesheet" href="dist/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<script src="dist/jquery/2.2.4/jquery.min.js"></script>
+<script src="dist/jquery-ui/1.12.1/jquery-ui.min.js"></script>
+<script src="dist/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="dist/angular/1.5.6/angular.min.js"></script>
+
+
+<link rel="stylesheet" href="css/main.css">
+<script src="js/main.js"></script>
+        
+</head>
+<body ng-controller="mainController">
+
+	<div id="container" class="container">
+		<div class="row">
+			<div class="col-sm-5 col-sm-offset-2">
+				<div class="alert alert-info" role="alert">Application only show holidays of 2008 as required in specifications</div>
+			</div>
+		</div>
+		
+		<form class="form-horizontal" name="form" novalidate ng-submit="form.$valid && getCalendar()">
+			<div class="form-group">
+				<label for="StartDate" class="control-label col-sm-2">Start Date:</label>
+				<div class="col-sm-5">
+					<input type="text" class="form-control" id="StartDate" name="StartDate" ng-model="StartDate" required="required">
+					<span class="text-danger" ng-show="form.$submitted || form.StartDate.$touched">
+						<span ng-show="form.StartDate.$error.required">Start Date field is required.</span>
+					</span>
+				</div>	
+			</div>
+			<div class="form-group">
+				<label for="NumberOfDays" class="control-label col-sm-2">Number of days:</label>
+				<div class="col-sm-5">
+					<input type="text" class="form-control" id="NumberOfDays" name="NumberOfDays" ng-model="NumberOfDays" required="required" ng-pattern="/^[0-9]{1,7}$/">
+					<span class="text-danger" ng-show="form.$submitted || form.NumberOfDays.$touched">
+						<span ng-show="form.NumberOfDays.$error.required">Number of days field is required.</span>
+						<span ng-show="form.NumberOfDays.$error.pattern">Not a valid number of days!</span>
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="CountryCode" class="control-label col-sm-2">Country Code:</label>
+				<div class="col-sm-5">
+					<input type="text" class="form-control" id="CountryCode" name="CountryCode" ng-model="CountryCode" required="required">
+					<span class="text-danger" ng-show="form.$submitted || form.CountryCode.$touched">
+						<span ng-show="form.CountryCode.$error.required">Country Code field is required.</span>
+					</span>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-5 col-sm-offset-2">
+					<button type="submit" class="btn btn-primary">Get Calendar</button>
+				</div>
+			</div>
+		</form>
+		
+		<div class="row">
+			<div class="col-sm-5 col-sm-offset-2">
+				<div id="Calendar"></div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>

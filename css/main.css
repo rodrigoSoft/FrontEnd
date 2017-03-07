@@ -1,0 +1,24 @@
+#Calendar .ui-datepicker td .ui-state-default.ui-state-active
+{
+	color: black;
+}
+
+#Calendar .ui-datepicker td .ui-state-default
+{
+	background-color: green;
+}
+
+#Calendar .ui-datepicker td.ui-datepicker-week-end .ui-state-default {
+	background-color: yellow;
+}
+
+#Calendar .ui-datepicker td.holiday .ui-state-default {
+	background-color: orange;
+}
+
+#Calendar .ui-datepicker td.ui-state-disabled.ui-datepicker-week-end .ui-state-default,
+#Calendar .ui-datepicker td.ui-state-disabled.holiday .ui-state-default,
+#Calendar .ui-datepicker td.ui-state-disabled .ui-state-default {
+	background-color: gray;
+	color: gray;
+}
